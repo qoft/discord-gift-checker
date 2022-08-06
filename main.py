@@ -7,7 +7,11 @@ def check_token(token):
     if "xbox" in sex.text.lower(): code = data[0]["code"];log(f"{colorama.Fore.GREEN}Xbox Code: {code}")
     elif "picsart" in sex.text.lower():code = data[0]["code"];log(f"{colorama.Fore.YELLOW}Picsart code: {code}")
     else:
-        if data != []: code = data[0]["code"]; log(f"{colorama.Fore.YELLOW}Other code: {code}")
+        if data != []: 
+            if "message" in data:
+                return 
+            code = data[0]["code"]; 
+            log(f"{colorama.Fore.YELLOW}Other code: {code}")
 def start():
     with open("tokens.txt", "r") as f:  tokens = f.read().splitlines()
     threads = []
